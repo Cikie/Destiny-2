@@ -1,0 +1,14 @@
+.Anh{
+    color: Blue;
+    font-family: Arial;
+    font-size: 30px;
+}
+.Image{
+    max-width: 200px;
+    height: auto;
+}
+.main{
+    width: 100%;
+    height: auto;
+    background-color: cyan;
+}
