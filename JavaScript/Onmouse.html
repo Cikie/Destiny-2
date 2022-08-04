@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <p onmouseover="mouseover()" onmouseout="mouseout()" id="destiny2">Destiny2</p>
+  <p id="destiny2">Destiny2</p>
 <script>
+  var demo = document.getElementById("destiny2");
+  demo.addEventListener("mouseover",mouseout);
+  demo.addEventListener("mouseout",mouseover);
+
   function mouseover() {
     document.getElementById("destiny2").style.color="Blue";
   }
