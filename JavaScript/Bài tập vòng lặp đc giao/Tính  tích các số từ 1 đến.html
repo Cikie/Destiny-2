@@ -6,12 +6,12 @@
 </head>
 <body>
 <script>
-    let a = +prompt('Số thứ nhất');
-    let b = +prompt('Số thứ hai');
-    let i = a;
-    for (; i < b; i++) {
-        document.write(i + '<br>')
+    let a = +prompt('Số cần ');
+    let tich = 1;
+    for (let i = 1; i <= a; i++) {
+        tich = tich * i;
     }
+    document.write(tich);
 </script>
 </body>
 </html>
