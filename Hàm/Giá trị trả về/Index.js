@@ -1,6 +1,6 @@
 function orderFruit() {
     let total = 0;
-    return total
+    return total;
 }
 
 let result = orderFruit();
