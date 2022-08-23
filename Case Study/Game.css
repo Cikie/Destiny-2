@@ -1,0 +1,15 @@
+body {
+    background: url(34613.jpg);
+    background-size: cover;
+}
+h1 {
+    size: 80px;
+}
+.game {
+    width: px;
+}
+.mid{
+    position: absolute;
+    margin-left: 15%;
+    border-style: solid;
+}
