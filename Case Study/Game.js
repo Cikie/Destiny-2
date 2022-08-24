@@ -1,8 +1,8 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const ROW = 18;
-const COL = 10
+const ROW = 20;
+const COL = 13;
 const SQ = 30;
 const COLOR = "WHITE";
 let score = 0;
@@ -118,11 +118,11 @@ class Piece {
                         board[y][c] = board[y - 1][c];
                     }
                 }
-                for(let c=0;c<COL;c++){
+                for (let c = 0; c < COL; c++) {
                     board[0][c] = COLOR;
                 }
 
-                score+= 10;
+                score += 10;
             }
         }
         drawBoard();
@@ -182,6 +182,7 @@ const PIECES = [
     [L, "purple"],
     [I, "cyan"],
     [J, "orange"],
+    [U,"Brown"]
 ];
 
 function randomPiece() {
