@@ -6,7 +6,7 @@ const COL = 13;
 const SQ = 30;
 const COLOR = "WHITE";
 let score = 0;
-
+//Vẽ ô vuông:
 function drawSquare(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * SQ, y * SQ, SQ, SQ);
@@ -14,7 +14,7 @@ function drawSquare(x, y, color) {
     ctx.strokeStyle = "#ccc";
     ctx.strokeRect(x * SQ, y * SQ, SQ, SQ);
 }
-
+//Mảng 2 chiều và màu của mảng
 let board = [];
 for (let r = 0; r < ROW; r++) {
     board[r] = [];
@@ -28,30 +28,30 @@ console.log(board)
 function drawBoard() {
     for (let r = 0; r < ROW; r++) {
         for (let c = 0; c < COL; c++) {
-            drawSquare(c, r, board[r][c]);
+            drawSquare(c, r, board[r][c]); //số hàng,số cột và màu
         }
     }
 }
 
 drawBoard();
-
+// Tạo hình khối
 class Piece {
     constructor(tetromino, color) {
         this.tetromino = tetromino;
         this.color = color;
 
-        this.tetrominoN = 0
+        this.tetrominoN = 0 // chỉ số góc quay đầu tiên
         this.activeTetromino = this.tetromino[this.tetrominoN];
 
-        this.x = 3;
+        this.x = 5;
         this.y = -2;
     }
 
     fill(color) {
-        for (let r = 0; r < this.activeTetromino.length; r++) {
-            for (let c = 0; c < this.activeTetromino.length; c++) {
-                if (this.activeTetromino[r][c]) {
-                    drawSquare(this.x + c, this.y + r, color);
+        for (let r = 0; r < this.activeTetromino.length; r++) { //duyệt qua hàng
+            for (let c = 0; c < this.activeTetromino.length; c++) { // duyệt qua cột
+                if (this.activeTetromino[r][c]) { //trường hợp nếu dữ liệu có giá trị
+                    drawSquare(this.x + c, this.y + r, color); // gọi function và truyền dữ liệu
                 }
             }
         }
@@ -64,7 +64,7 @@ class Piece {
     undraw() {
         this.fill(COLOR)
     }
-
+// Hàm di chuyển:
     moveDown() {
         if (!this.collision(0, 1, this.activeTetromino)) {
             this.undraw();
@@ -91,7 +91,7 @@ class Piece {
             this.draw();
         }
     }
-
+//Kết thúc
     lock() {
         for (let r = 0; r < this.activeTetromino.length; r++) {
             for (let c = 0; c < this.activeTetromino.length; c++) {
@@ -110,7 +110,7 @@ class Piece {
         for (let r = 0; r < ROW; r++) {
             let isFull = true;
             for (let c = 0; c < COL; c++) {
-                isFull = isFull && (board[r][c] != COLOR)
+                isFull = isFull && (board[r][c] !== COLOR)
             }
             if (isFull) {
                 for (let y = r; y > 1; y--) {
@@ -165,7 +165,7 @@ class Piece {
                 if (newY < 0) {
                     continue
                 }
-                if (board[newY][newX] != COLOR) {
+                if (board [newY] [newX] !== COLOR) {
                     return true
                 }
             }
@@ -175,14 +175,14 @@ class Piece {
 }
 
 const PIECES = [
-    [Z, "red"],
-    [S, "green"],
-    [T, "yellow"],
-    [O, "blue"],
-    [L, "purple"],
-    [I, "cyan"],
-    [J, "orange"],
-    [U,"Brown"]
+    [Z, "#EE0000"],
+    [S, "#00BFFF"],
+    [T, "#FF9933"],
+    [O, "#0000FF"],
+    [L, "#00FF00"],
+    [I, "#FFC1C1"],
+    [J, "#FFFF00"],
+    [U, "#FF69B4"]
 ];
 
 function randomPiece() {
@@ -194,13 +194,13 @@ let p = randomPiece();
 console.log(p);
 
 document.addEventListener("keydown", function (e) {
-    if (e.keyCode == 37) {
+    if (e.keyCode === 37) {
         p.moveLeft();
-    } else if (e.keyCode == 39) {
+    } else if (e.keyCode === 39) {
         p.moveRight();
-    } else if (e.keyCode == 40) {
+    } else if (e.keyCode === 40) {
         p.moveDown();
-    } else if (e.keyCode == 38) {
+    } else if (e.keyCode === 38) {
         p.rotate();
     }
 })
